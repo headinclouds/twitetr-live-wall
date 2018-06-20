@@ -25,7 +25,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["src/require.js",
+              "src/twitter.js"]
           },
           "configurations": {
             "production": {
