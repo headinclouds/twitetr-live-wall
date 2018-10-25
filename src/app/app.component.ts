@@ -19,10 +19,9 @@ constructor(public http: Http) { }
      this.parameter.set('param1', searchTweet);
      let requestOptions = new RequestOptions();
      requestOptions.search = this.parameter;
-     return this.http.get('http://localhost:3000/', requestOptions)
+     return this.http.get('http://localhost:3000/',  requestOptions)
        .map((res: Response) => res.json())
        .subscribe((res: any) => {
-         console.log(res, 'res');
          this.tweets = res;
        });
    }

@@ -1,0 +1,17 @@
+.media{
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+.media:last-child{
+    border-bottom: none;
+}
+.bg-dark {
+    background-color: #343a40!important;
+    color: #ffffff;
+    height: 100px;
+    display: flex;
+    align-items:center;
+    margin-bottom: 10px;
+}
