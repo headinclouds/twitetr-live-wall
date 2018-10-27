@@ -1,12 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
+import { HttpModule } from '@angular/http';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, Http ],
+      imports: [ FormsModule, HttpModule ],
       declarations: [
         AppComponent
       ],
@@ -26,6 +27,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to twitter-live-wall!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Twitter Live Wall');
   }));
 });
