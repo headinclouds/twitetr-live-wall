@@ -1,7 +1,7 @@
 # TwitterLiveWall
 
 Small app for searching among twits according to search request.
-Demo image: ![alt text](https://raw.githubusercontent.com/headinclouds/twitter-live-wall/master/demo-img.png)
+Demo image: ![alt text](https://github.com/headinclouds/twitter-live-wall/blob/master/demo-img.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
 
