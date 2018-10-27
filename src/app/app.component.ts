@@ -9,7 +9,6 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
   parameter: URLSearchParams = new URLSearchParams();
   tweets: any;
   searchTweet:any;
