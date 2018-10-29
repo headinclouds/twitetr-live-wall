@@ -14,7 +14,7 @@ export class TwitsService {
 constructor(private http: Http) { }
 
   getTweets(searchTweet:string) {
-     this.parameter.set('param1', searchTweet);
+    this.parameter.set('param1', searchTweet);
      let requestOptions = new RequestOptions();
      requestOptions.search = this.parameter;
      return this.http.get('http://localhost:3000',  requestOptions)

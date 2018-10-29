@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { TwitsService } from './services/twits.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +13,8 @@ import { TwitsService } from './services/twits.service';
     BrowserModule,
     FormsModule,
     //  ReactiveFormsModule,
-    HttpModule,
+    HttpModule
+    
   ],
   providers: [TwitsService],
   bootstrap: [AppComponent]
