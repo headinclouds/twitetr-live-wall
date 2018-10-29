@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-
-import { Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { TwitsService } from './services/twits.service';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +7,12 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  parameter: URLSearchParams = new URLSearchParams();
   tweets: any;
-  searchTweet:any;
-constructor(public http: Http) { }
+  constructor(private twits: TwitsService) { }
 
-  getTweets(searchTweet:string) {
-     this.parameter.set('param1', searchTweet);
-     let requestOptions = new RequestOptions();
-     requestOptions.search = this.parameter;
-     return this.http.get('http://localhost:3000',  requestOptions)
-       .map((res: Response) => res.json())
-       .subscribe((res: any) => {
-         this.tweets = res;
-       });
-   }
+  getTweets(searchTweet: string) {
+    this.twits.getTweets(searchTweet).subscribe((res: any) => {
+      this.tweets = res;
+    }, error => alert(error));
+  }
 }
