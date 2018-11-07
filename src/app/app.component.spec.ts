@@ -1,16 +1,21 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, HttpModule ],
+      imports: [ FormsModule, HttpClientModule, HttpClientTestingModule ],
       declarations: [
         AppComponent
       ],
+      providers: [AppComponent],
+     // imports: [HttpClientTestingModule, HttpClientModule]
     }).compileComponents();
   })); 
   it('should create the app', async(() => {
@@ -29,4 +34,6 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to Twitter Live Wall');
   }));
+
+      
 });

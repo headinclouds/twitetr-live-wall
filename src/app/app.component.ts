@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TwitsService } from './services/twits.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,13 @@ export class AppComponent {
   constructor(private twits: TwitsService) { }
 
   getTweets(searchTweet: string) {
-    this.twits.getTweets(searchTweet).subscribe((res: any) => {
-      this.tweets = res;
-    }, error => alert(error));
+    this.twits.getTweets(searchTweet)
+      .subscribe((res) => {
+        this.tweets = res;
+      },
+        (err: HttpErrorResponse) => {
+          alert(err.message);
+        }
+      )
   }
 }

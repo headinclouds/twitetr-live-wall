@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TwitsService } from './twits.service';
-import { HttpModule  } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('TwitsService', () => {
   let service: TwitsService;
@@ -14,13 +14,13 @@ describe('TwitsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [TwitsService],
-      imports: [HttpClientTestingModule, HttpModule]
+      imports: [HttpClientTestingModule, HttpClientModule]
 
     });
     // inject the service
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = TestBed.get(TwitsService);
-    httpMock = TestBed.get(HttpTestingController);
+    // httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    // service = TestBed.get(TwitsService);
+    //  httpMock = TestBed.get(HttpTestingController);
   });
 
 
@@ -29,22 +29,23 @@ describe('TwitsService', () => {
   }));
   it('should call get with correct URL', async(inject([HttpTestingController, TwitsService], (httpMock: HttpTestingController, service: TwitsService) => {
     service.getTweets('Test').subscribe((data) => {
-      
-
     })
-    httpMock.expectNone({});
-      console.log(service, 'httpMock')
-   //   httpMock.expectOne(req)
+    const mockReq = httpMock.expectOne(service.url);
+    expect(mockReq.cancelled).toBeFalsy();
+    expect(mockReq.request.responseType).toEqual('json');
+    httpMock.verify();
   })));
 
   it('should get the data successful', async(inject([HttpTestingController, TwitsService],
     (httpMock: HttpTestingController, service: TwitsService) => {
+      //  var dataArray;
       service.getTweets('Test').subscribe((data: Array<Object>) => {
         expect(typeof (data)).toEqual('object');
         expect(data.length).toBeGreaterThanOrEqual(0);
-      }, error => { 
+      }, error => {
         expect(error).toContain('error');
-       });
+      });
+
     })));
 
 
